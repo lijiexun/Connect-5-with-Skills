@@ -30,7 +30,7 @@ body{font-family:'GameFont','Arial Black',Impact,sans-serif;background:var(--bg)
 .score-item{display:flex;align-items:center;gap:6px}
 .score-dot{width:16px;height:16px;border-radius:50%;display:inline-block;border:2px solid #555}
 .score-dot.b{background:#111}
-.score-dot.w{background:#eee;width:14px;height:14px;border-radius:2px}
+.score-dot.w{background:#eee}
 #canvas-wrap{position:relative;width:100%;max-width:600px;aspect-ratio:1;margin:5px auto}
 canvas{width:100%;height:100%;border-radius:8px;cursor:pointer;touch-action:none}
 #skill-panel{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:10px 0;width:100%}
@@ -348,15 +348,12 @@ function drawBoard() {
         ctx.fillStyle = grad; ctx.fill();
         ctx.strokeStyle = '#000'; ctx.lineWidth = 1; ctx.stroke();
       } else {
-        // White square
-        const half = pieceR * 0.85;
-        ctx.fillStyle = '#f0f0f0';
-        ctx.fillRect(x - half, y - half, half * 2, half * 2);
-        ctx.strokeStyle = '#999'; ctx.lineWidth = 1.5;
-        ctx.strokeRect(x - half, y - half, half * 2, half * 2);
-        // Inner shine
-        ctx.fillStyle = 'rgba(255,255,255,0.4)';
-        ctx.fillRect(x - half + 2, y - half + 2, half, half * 0.5);
+        // White circle
+        ctx.beginPath(); ctx.arc(x, y, pieceR, 0, Math.PI * 2);
+        const grad = ctx.createRadialGradient(x - pieceR*0.3, y - pieceR*0.3, pieceR*0.1, x, y, pieceR);
+        grad.addColorStop(0, '#fff'); grad.addColorStop(1, '#ccc');
+        ctx.fillStyle = grad; ctx.fill();
+        ctx.strokeStyle = '#999'; ctx.lineWidth = 1.5; ctx.stroke();
       }
     }
   }
@@ -369,8 +366,7 @@ function drawBoard() {
     if (last.player === BLACK) {
       ctx.beginPath(); ctx.arc(x, y, pieceR + 3, 0, Math.PI * 2); ctx.stroke();
     } else {
-      const half = pieceR * 0.85 + 3;
-      ctx.strokeRect(x - half, y - half, half * 2, half * 2);
+      ctx.beginPath(); ctx.arc(x, y, pieceR + 3, 0, Math.PI * 2); ctx.stroke();
     }
   }
   // Hover highlight
@@ -381,9 +377,8 @@ function drawBoard() {
       ctx.beginPath(); ctx.arc(x, y, pieceR, 0, Math.PI * 2);
       ctx.fillStyle = '#333'; ctx.fill();
     } else {
-      const half = pieceR * 0.85;
-      ctx.fillStyle = '#ccc';
-      ctx.fillRect(x - half, y - half, half * 2, half * 2);
+      ctx.beginPath(); ctx.arc(x, y, pieceR, 0, Math.PI * 2);
+      ctx.fillStyle = '#ccc'; ctx.fill();
     }
     ctx.globalAlpha = 1;
   }
