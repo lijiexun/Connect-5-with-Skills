@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Connect 5 — Gomoku</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+    <h1>Connect 5</h1>
+    <div id="status">
+      <span id="current-stone" class="stone black"></span>
+      <span id="status-text">Black's turn</span>
+    </div>
+    <canvas id="board"></canvas>
+    <div id="controls">
+      <button id="undo-btn">Undo</button>
+      <button id="new-game-btn">New Game</button>
+    </div>
+    <div id="score">
+      <span class="score-item"><span class="stone black small"></span> Black: <span id="black-score">0</span></span>
+      <span class="score-item"><span class="stone white small"></span> White: <span id="white-score">0</span></span>
+    </div>
+  </div>
+  <script src="game.js"></script>
+</body>
+</html>

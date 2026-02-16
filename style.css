@@ -1,0 +1,125 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background: #2c3e50;
+  color: #ecf0f1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+/* --- Status bar --- */
+
+#status {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.2rem;
+  height: 36px;
+}
+
+/* --- Stone indicators --- */
+
+.stone {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+
+.stone.black {
+  background: radial-gradient(circle at 35% 35%, #555, #111);
+}
+
+.stone.white {
+  background: radial-gradient(circle at 35% 35%, #fff, #ccc);
+  border: 1px solid #999;
+}
+
+.stone.small {
+  width: 16px;
+  height: 16px;
+}
+
+/* --- Canvas board --- */
+
+#board {
+  cursor: pointer;
+  border-radius: 6px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* --- Controls --- */
+
+#controls {
+  display: flex;
+  gap: 12px;
+}
+
+#controls button {
+  padding: 10px 24px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.15s, transform 0.1s;
+}
+
+#controls button:active {
+  transform: scale(0.96);
+}
+
+#undo-btn {
+  background: #7f8c8d;
+  color: #fff;
+}
+
+#undo-btn:hover {
+  background: #95a5a6;
+}
+
+#new-game-btn {
+  background: #e74c3c;
+  color: #fff;
+}
+
+#new-game-btn:hover {
+  background: #c0392b;
+}
+
+/* --- Score --- */
+
+#score {
+  display: flex;
+  gap: 30px;
+  font-size: 1.1rem;
+}
+
+.score-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
